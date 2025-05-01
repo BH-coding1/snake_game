@@ -5,7 +5,7 @@ import Snake
 from Snake import *
 import Food
 from Food import *
-
+from Score import *
 def main():
     # create screen
     screen = Screen()
@@ -21,7 +21,7 @@ def main():
     screen.onkey(fun=snake.mv_left, key='Left')
     screen.onkey(fun=snake.mv_up, key='Up')
     screen.onkey(fun=snake.mv_down, key='Down')
-
+    score = Score()
    
     while True :
         screen.update()
@@ -29,9 +29,10 @@ def main():
         snake.move()
         if snake.snakes[0].distance(food) <15:
             food.tp()
-            print('DETECTED')
-        if snake.snakes[0].xcor()>280 or snake.snakes[0].xcor < -280 or snake.snakes[0].ycor >280 or snake.snakes[0].ycor() < -280:
-            exit()
+            score.update_score()
+        if snake.snakes[0].xcor()>280 or snake.snakes[0].xcor() < -280 or snake.snakes[0].ycor() >280 or snake.snakes[0].ycor() < -280:
+            exitonclick()
+
 
 
 
