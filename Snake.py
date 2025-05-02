@@ -11,7 +11,11 @@ class Snake:
         # creating the snake
         self.snakes = []
         self.create_snake()
-
+    def reset(self):
+        for snake in self.snakes:
+            snake.goto(1000,1000)
+        self.snakes.clear()
+        self.create_snake()
     def create_snake(self):
         for i in POSITIONS:
             self.new_snakes = Turtle()
@@ -20,6 +24,13 @@ class Snake:
             self.new_snakes .color('white')
             self.new_snakes.goto(i)
             self.snakes.append(self.new_snakes)
+    def extend(self):
+        self.new_snakes = Turtle()
+        self.new_snakes.penup()
+        self.new_snakes.shape('square')
+        self.new_snakes.color('white')
+        self.new_snakes.goto(self.snakes[len(self.snakes)-1].xcor(),self.snakes[len(self.snakes)-1].ycor())
+        self.snakes.append(self.new_snakes)
 
 
     def move(self):

@@ -28,10 +28,20 @@ def main():
         time.sleep(0.1)
         snake.move()
         if snake.snakes[0].distance(food) <15:
+            snake.extend()
             food.tp()
             score.update_score()
         if snake.snakes[0].xcor()>280 or snake.snakes[0].xcor() < -280 or snake.snakes[0].ycor() >280 or snake.snakes[0].ycor() < -280:
-            exitonclick()
+            score.reset()
+            snake.reset()
+
+        for part  in snake.snakes :
+            if part == snake.snakes[0]:
+                pass
+            elif snake.snakes[0].distance(part) <10 :
+                score.reset()
+                snake.reset()
+
 
 
 
