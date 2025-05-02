@@ -22,7 +22,10 @@ def main():
     screen.onkey(fun=snake.mv_up, key='Up')
     screen.onkey(fun=snake.mv_down, key='Down')
     score = Score()
-   
+    with open('My_file.txt') as file :
+        contents = file.read()
+        print(contents)
+
     while True :
         screen.update()
         time.sleep(0.1)
